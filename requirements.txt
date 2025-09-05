@@ -1,0 +1,7 @@
+openai==1.0.0
+python-dotenv
+logging
+requests
+GitPython
+PyPDF2
+markdown-it-py

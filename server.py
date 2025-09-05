@@ -31,7 +31,7 @@ def ask_llm(question):
 
         # Realizar la consulta al modelo
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # O puedes usar "gpt-4"
+            model="gpt-3.5-turbo",
             messages=conversation_history
         )
 
