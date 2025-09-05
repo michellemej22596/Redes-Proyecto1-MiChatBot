@@ -1,85 +1,76 @@
-# Redes-Proyecto1-MiChatBot
-Michelle Mejía 22596
 
-A comprehensive implementation of the Model Context Protocol (MCP) featuring a chatbot client that integrates with multiple local and remote MCP servers.
+# Genius Notes MCP Server
 
-## Project Overview
+## Overview
+The Genius Notes MCP Server is a tool designed to help students automate the process of managing their notes, creating study material, and organizing their projects. It is capable of reading local **PDF** and **Markdown** files, generating **summaries**, **flashcards**, and **TODO lists** from them. Additionally, it integrates with **GitHub** to create repositories and generate README files based on the content of the notes.
 
-This project implements a chatbot that serves as an MCP host, capable of:
-- Connecting to LLM APIs (Anthropic Claude)
-- Managing multiple MCP server connections
-- Maintaining conversation context and interaction logs
-- Using local and remote MCP servers
-- Network communication analysis
-
-## Project Structure
-
-\`\`\`
-mcp-chatbot-project/
-├── src/
-│   ├── chatbot/              # Main chatbot implementation
-│   ├── mcp-client/           # MCP client implementation
-│   ├── servers/              # Local MCP servers
-│   └── utils/                # Utility functions
-├── remote-server/            # Remote MCP server implementation
-├── network-analysis/         # Wireshark analysis tools
-├── docs/                     # Documentation and reports
-├── tests/                    # Test files
-├── examples/                 # Usage examples
-└── scripts/                  # Setup and utility scripts
-\`\`\`
-
-## Requirements
-
-- Python 3.8+
-- Node.js 16+ (for some MCP servers)
-- Anthropic API key
-- Git
-- Wireshark (for network analysis)
+## Features
+- **PDF and Markdown Parsing**: The server can parse local **PDF** and **Markdown** files, extracting important information.
+- **Content Summarization**: Automatically generates summaries of the documents to provide a concise overview.
+- **Flashcards Generation**: Create study flashcards based on the content of the notes for easy revision.
+- **TODO Extraction**: Extract and list `TODO` items from the notes to keep track of pending tasks.
+- **GitHub Integration**: Automatically creates repositories, generates README files, and commits the content, making it easy to start new projects or document existing ones.
+- **Fully Local**: All functionalities are processed locally on your computer, ensuring privacy and data security.
 
 ## Installation
+### Prerequisites
+- **Python 3.x** (preferably Python 3.8+)
+- **Git** (for GitHub integration)
 
-1. Clone the repository:
-\`\`\`bash
-git clone <repository-url>
-cd mcp-chatbot-project
-\`\`\`
+### Steps to Install
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/genius-notes-mcp.git
+    cd genius-notes-mcp
+    ```
 
-2. Install Python dependencies:
-\`\`\`bash
-pip install -r requirements.txt
-\`\`\`
+2. **Install the required dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. Set up environment variables:
-\`\`\`bash
-cp .env.example .env
-# Edit .env with your API keys
-\`\`\`
+3. **Install Git (if not installed)**:
+    Follow the instructions from the [Git website](https://git-scm.com/) to install Git on your machine.
 
-4. Run the chatbot:
-\`\`\`bash
-python src/chatbot/main.py
-\`\`\`
+4. **Set up GitHub personal access token**:
+    You will need to create a personal access token for GitHub to allow the server to create repositories and commit files on your behalf. Instructions can be found in the [GitHub Docs](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 
-## Features Implemented
+## Usage
+### Running the Server
+1. Start the MCP server by running the following command:
+    ```bash
+    python server.py
+    ```
 
-### Core Chatbot (15%)
-- [x] LLM API connection (Anthropic Claude)
-- [x] Context maintenance across conversations
-- [x] MCP interaction logging
+2. Once the server is running, you can interact with it via the **chatbot** console interface. You can use the following commands:
+    - `index_files(path)` - Indexes all the files in the specified directory.
+    - `search(query)` - Searches for content in the indexed files based on the query.
+    - `generate_flashcards(file)` - Generates flashcards from the specified file.
+    - `create_github_repo()` - Creates a new GitHub repository and commits the content.
 
-### Local MCP Servers (30%)
-- [x] Integration with official Filesystem MCP server
-- [x] Integration with official Git MCP server
-- [x] Custom MCP server implementation
+3. **Example interaction**:
+    ```bash
+    > index_files("/path/to/notes")
+    > search("Dijkstra Algorithm")
+    > generate_flashcards("algorithms.md")
+    > create_github_repo()
+    ```
 
-### Remote & Advanced Features (45%)
-- [x] Integration with peer student MCP servers
-- [x] Remote MCP server deployment
-- [x] Network communication analysis with Wireshark
+### Example Directory Structure
+```bash
+genius-notes-mcp/
+│
+├── server.py            # Main server file that handles all requests
+├── requirements.txt     # List of required Python packages
+├── notes/               # Directory containing notes (PDF, Markdown)
+│   ├── algorithms.md    # Example Markdown note
+│   └── algorithms.pdf   # Example PDF note
+└── README.md            # Project description (this file)
+```
 
-### Documentation (10%)
-- [x] Complete project documentation
-- [x] Network protocol analysis report
-- [x] Usage examples and specifications
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Acknowledgments
+- This project uses **Model Context Protocol (MCP)** for communication between the chatbot and the server.
+- Special thanks to the open-source communities for libraries like **PyPDF**, **markdown-it-py**, and **GitHub API**.
