@@ -33,23 +33,31 @@ def process_file(file_path):
     else:
         raise ValueError("Unsupported file type. Only .pdf and .md files are supported.")
 
+# Función para crear un resumen utilizando el modelo de chat (gpt-3.5-turbo o gpt-4)
 def create_summary(text):
-    # Usamos OpenAI para crear un resumen del texto
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo",
-        prompt=f"Please summarize the following text:\n{text}",
+    # Usamos el endpoint adecuado para los modelos de chat
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # O "gpt-4" si prefieres usar ese
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": f"Please summarize the following text:\n{text}"}
+        ],
         max_tokens=150
     )
     return response['choices'][0]['message']['content'].strip()
 
+# Función para generar flashcards utilizando el modelo de chat
 def generate_flashcards(text):
-    # Aquí generamos flashcards a partir del texto
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo",
-        prompt=f"Generate flashcards from the following text:\n{text}",
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # O "gpt-4" si prefieres usar ese
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": f"Generate flashcards from the following text:\n{text}"}
+        ],
         max_tokens=150
     )
     return response['choices'][0]['message']['content'].strip()
+
 
 # Función principal para manejar archivos y generar material de estudio
 def handle_file(file_path):

@@ -1,61 +1,47 @@
+# server.py
 import openai
 from dotenv import load_dotenv
 import os
 import logging
+from mcp_servers.filesystem_mcp import process_file, create_summary, generate_flashcards, handle_file
+from mcp_servers.git_mcp import commit_to_github
 
-# Cargar las variables de entorno del archivo .env
+# Cargar variables de entorno
 load_dotenv()
-
-# Obtener la clave de la API desde las variables de entorno
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-# Configurar el logging
-logging.basicConfig(
-    filename="chatbot_interactions.log",  # Guardar los logs en un archivo
-    level=logging.INFO,  # Nivel de los mensajes a registrar (INFO, DEBUG, ERROR, etc.)
-    format="%(asctime)s - %(levelname)s - %(message)s",  # Formato del log
-)
+# Historial de conversación
+conversation_history = [{"role": "system", "content": "You are a helpful assistant."}]
 
-# Historial de la conversación para mantener el contexto
-conversation_history = [
-    {"role": "system", "content": "You are a helpful assistant."}
-]
+# Configurar logging
+logging.basicConfig(filename="chatbot_interactions.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def ask_llm(question):
-    try:
-        # Añadir la nueva pregunta del usuario al historial
-        conversation_history.append({"role": "user", "content": question})
+    """ Consulta al modelo de OpenAI y mantiene el contexto """
+    conversation_history.append({"role": "user", "content": question})
 
-        # Loggear la solicitud
-        logging.info(f"User Question: {question}")
+    logging.info(f"User Question: {question}")
 
-        # Realizar la consulta al modelo
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=conversation_history
-        )
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=conversation_history)
 
-        # Obtener la respuesta generada por el modelo
-        assistant_reply = response['choices'][0]['message']['content'].strip()
+    assistant_reply = response['choices'][0]['message']['content'].strip()
+    conversation_history.append({"role": "assistant", "content": assistant_reply})
 
-        # Añadir la respuesta del asistente al historial para futuras interacciones
-        conversation_history.append({"role": "assistant", "content": assistant_reply})
+    logging.info(f"Assistant Response: {assistant_reply}")
 
-        # Loggear la respuesta
-        logging.info(f"Assistant Response: {assistant_reply}")
+    return assistant_reply
 
-        return assistant_reply
+def handle_file_interaction(file_path):
+    """ Procesar archivo y generar material de estudio """
+    summary, flashcards = handle_file(file_path)
+    return summary, flashcards
 
-    except Exception as e:
-        # En caso de error, loggear el error
-        logging.error(f"Error: {str(e)}")
-        return f"Error: {str(e)}"
+def handle_git_interaction(repo_name, readme_content):
+    """ Crear repositorio en GitHub y hacer commit """
+    result = commit_to_github(repo_name, readme_content)
+    return result
 
-# Ejemplo de uso
-question1 = "Who was Alan Turing?"
-answer1 = ask_llm(question1)
-print("Answer to Q1:", answer1)
-
-question2 = "When was he born?"
-answer2 = ask_llm(question2)
-print("Answer to Q2:", answer2)
+#Ejemplo de uso
+summary, flashcards = handle_file("notes/algorithms.md")
+print("Summary:", summary)
+print("Flashcards:", flashcards)
