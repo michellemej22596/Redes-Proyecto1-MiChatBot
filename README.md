@@ -1,5 +1,6 @@
 
 # Genius Notes MCP Server
+<img width="948" height="460" alt="image" src="https://github.com/user-attachments/assets/a89e9730-8785-44be-be0f-5a71acd5ad19" />
 
 ## Overview
 The Genius Notes MCP Server is a tool designed to help students automate the process of managing their notes, creating study material, and organizing their projects. It is capable of reading local **PDF** and **Markdown** files, generating **summaries**, **flashcards**, and **TODO lists** from them. Additionally, it integrates with **GitHub** to create repositories and generate README files based on the content of the notes.
