@@ -1,0 +1,47 @@
+2025-09-05 22:44:09,022 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.9:5000
+2025-09-05 22:44:09,022 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-05 22:44:20,350 - INFO - Received request to process file: notes/algorithms.md
+2025-09-05 22:44:20,350 - ERROR - Error processing file notes/algorithms.md: [Errno 2] No such file or directory: 'notes/algorithms.md'
+2025-09-05 22:44:20,350 - ERROR - The method did not return a valid Result (returned {'error': "[Errno 2] No such file or directory: 'notes/algorithms.md'"})
+Traceback (most recent call last):
+  File "C:\Users\usuario\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jsonrpcserver\dispatcher.py", line 131, in call
+    validate_result(result)
+  File "C:\Users\usuario\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jsonrpcserver\dispatcher.py", line 114, in validate_result
+    assert (isinstance(result, Left) and isinstance(result._error, ErrorResult)) or (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: The method did not return a valid Result (returned {'error': "[Errno 2] No such file or directory: 'notes/algorithms.md'"})
+2025-09-05 22:44:20,352 - INFO - 127.0.0.1 - - [05/Sep/2025 22:44:20] "POST / HTTP/1.1" 200 -
+2025-09-06 22:44:36,126 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.9:5000
+2025-09-06 22:44:36,126 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-06 22:44:50,996 - INFO - Received request to process file: notes/algorithms.md
+2025-09-06 22:44:50,996 - ERROR - Error processing file notes/algorithms.md: [Errno 2] No such file or directory: 'notes/algorithms.md'
+2025-09-06 22:44:50,996 - ERROR - The method did not return a valid Result (returned {'error': "[Errno 2] No such file or directory: 'notes/algorithms.md'"})
+Traceback (most recent call last):
+  File "C:\Users\usuario\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jsonrpcserver\dispatcher.py", line 131, in call
+    validate_result(result)
+  File "C:\Users\usuario\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jsonrpcserver\dispatcher.py", line 114, in validate_result
+    assert (isinstance(result, Left) and isinstance(result._error, ErrorResult)) or (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: The method did not return a valid Result (returned {'error': "[Errno 2] No such file or directory: 'notes/algorithms.md'"})
+2025-09-06 22:44:51,015 - INFO - 127.0.0.1 - - [06/Sep/2025 22:44:51] "POST / HTTP/1.1" 200 -
+2025-09-06 22:46:16,716 - INFO - 127.0.0.1 - - [06/Sep/2025 22:46:16] "POST / HTTP/1.1" 200 -
+2025-09-06 22:48:26,411 - INFO - Received request to process file: notes/algorithms.md
+2025-09-06 22:48:26,411 - ERROR - Error processing file notes/algorithms.md: [Errno 2] No such file or directory: 'notes/algorithms.md'
+2025-09-06 22:48:26,411 - ERROR - The method did not return a valid Result (returned {'error': "[Errno 2] No such file or directory: 'notes/algorithms.md'"})
+Traceback (most recent call last):
+  File "C:\Users\usuario\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jsonrpcserver\dispatcher.py", line 131, in call
+    validate_result(result)
+  File "C:\Users\usuario\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jsonrpcserver\dispatcher.py", line 114, in validate_result
+    assert (isinstance(result, Left) and isinstance(result._error, ErrorResult)) or (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: The method did not return a valid Result (returned {'error': "[Errno 2] No such file or directory: 'notes/algorithms.md'"})
+2025-09-06 22:48:26,414 - INFO - 127.0.0.1 - - [06/Sep/2025 22:48:26] "POST / HTTP/1.1" 200 -
+2025-09-06 22:48:29,676 - INFO - 127.0.0.1 - - [06/Sep/2025 22:48:29] "POST / HTTP/1.1" 200 -
+2025-09-06 22:48:36,916 - INFO - 127.0.0.1 - - [06/Sep/2025 22:48:36] "POST / HTTP/1.1" 200 -
+2025-09-06 22:49:17,301 - INFO - 127.0.0.1 - - [06/Sep/2025 22:49:17] "POST / HTTP/1.1" 200 -
